@@ -1,0 +1,75 @@
+// =============================================================================
+//
+// Name:          Font-size
+//
+// Description:   Sizing and vertical rhythm.
+//
+// Markup:
+//
+// .foo {
+//     @include tree-font-size(12px);
+// }
+//
+// This will generate a rem-based font-size with its pixel fallback, as well as
+// a unitless line-height which will place the element on your baseline, e.g.:
+//
+// .foo {
+//     font-size: 12px;
+//     font-size: 0.75rem;
+//     line-height: 2;
+// }
+//
+// If you do not want to generate you a line-height automatically, you simply 
+// pass in your own as a second paramater:
+//
+// .foo {
+//     @include tree-font-size(12px, 1.5);
+// }
+//
+// This will yield:
+//
+// .foo {
+//     font-size: 12px;
+//     font-size: 0.75rem;
+//     line-height: 1.5;
+// }
+//
+// This parameter can be any integer, ‘inherit’, or ‘normal’. If you don’t want
+// a line-height at all, pass in a second paramater of ‘none’ or ‘false’:
+//
+// .foo {
+//     @include tree-font-size(12px, none);
+// }
+//
+// This will yield:
+//
+// .foo {
+//     font-size: 12px;
+//     font-size: 0.75rem;
+// }
+//
+// =============================================================================
+
+
+
+
+
+@mixin tree-font-size($tree-font-size, $tree-line-height: auto) {
+    font-size: $tree-font-size;
+    font-size: ($tree-font-size / $tree-base-font-size) * 1rem;
+
+    @if $tree-line-height == auto {
+        line-height: ceil($tree-font-size / $tree-base-line-height) * ($tree-base-line-height / $tree-font-size);
+    } @else {
+
+        @if (type-of($tree-line-height) == number or $tree-line-height == inherit or $tree-line-height == normal) {
+            line-height: $tree-line-height;
+        }
+
+        @elseif ($tree-line-height != none and $tree-line-height != false) {
+            @warn "D’oh! ‘#{$tree-line-height}’ is not a valid value for `line-height`."
+        }
+
+    }
+
+}
