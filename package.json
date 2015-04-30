@@ -1,0 +1,23 @@
+{
+  "name": "tree-font-size",
+  "description": "Sizing and vertical rhythm",
+  "version": "0.1.0",
+  "author": "Ilia Kolev <info@iliakolev.com>",
+  "bugs": {
+    "url": "https://github.com/treeframework/tools.font-size/issues"
+  },
+  "dependencies": {
+    "tree-defaults": "~0.2.5"
+  },
+  "homepage": "https://github.com/treeframework/tools.font-size",
+  "keywords": [
+    "css",
+    "oocss"
+  ],
+  "license": "MIT",
+  "main": "_tools.font-size.scss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/treeframework/tools.font-size.git"
+  }
+}
